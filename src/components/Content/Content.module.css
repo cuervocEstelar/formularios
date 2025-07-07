@@ -1,0 +1,82 @@
+.text_section{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 16px;
+
+
+}
+
+
+.text_section span{
+align-self: stretch;
+color: #FFF;
+
+/* Text lg/Semibold */
+font-family: var(--Typeface-font-paragraph, Inter);
+font-size: var(--Font-size-text-lg, 18px);
+font-style: normal;
+font-weight: 600;
+line-height: var(--Line-height-text-lg, 28px); /* 155.556% */
+
+}
+
+
+.text_section h1 {
+align-self: stretch;
+color: var(--Color-text-text-primary, #F7F8F8);
+font-family: var(--Typeface-font-display, Rubik);
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: var(--Line-height-display-md, 44px); /* 137.5% */
+letter-spacing: -0.64px;
+}
+
+/* seccion de imagen */
+
+
+.ImageSection{
+
+display: flex;
+justify-content: center;
+align-items: center ;
+
+}
+
+.ImageSection img {
+height: 100%;
+width: 100%;
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .text_section span{
+align-self: stretch;
+color: #FFF;
+
+/* Text md/Semibold */
+font-family: var(--Typeface-font-paragraph, Inter);
+font-size: var(--Font-size-text-md, 16px);
+font-style: normal;
+font-weight: 600;
+line-height: var(--Line-height-text-md, 24px); /* 150% */
+}
+
+
+.text_section h1 {
+align-self: stretch;
+color: var(--Color-text-text-primary, #F7F8F8);
+font-family: var(--Typeface-font-display, Rubik);
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 32px; /* 133.333% */
+letter-spacing: -0.48px;
+}
+
+
+}
