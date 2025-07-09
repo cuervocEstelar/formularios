@@ -17,7 +17,8 @@ const RegisterForm = () => {
     rut: '',
     dia: '',
     mes: '',
-    ano: ''
+    ano: '',
+    
   });
 
   // Estado para controlar el paso actual del wizard
@@ -71,16 +72,16 @@ const RegisterForm = () => {
         <div className="form-navigation">
           {currentStep > 1 && (
             <button className="nav-button nav-button-back" type="button" onClick={prevStep}>
-              Atrás
+              Ir atrás
             </button>
           )}
           {currentStep < totalSteps ? (
             <button className="nav-button nav-button-next" type="button" onClick={nextStep}>
-              Siguiente
+              Continuar
             </button>
           ) : (
             <button className="nav-button nav-button-submit" type="submit">
-              Enviar
+              Crear cuenta
             </button>
           )}
         </div>

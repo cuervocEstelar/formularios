@@ -1,32 +1,17 @@
-
-import React from "react";
-
-const StepIndicador = ({ currentStep, totalPasos = 2 }) => {
-
-
-
+const StepIndicador = ({ pasoActual = 1, totalPasos = 2 }) => {
+  const porcentaje = (pasoActual / totalPasos) * 100;
   return (
-    <>
-
+    <div className="ProgressBarContainer">
       <div className="step-container">
-
-        <div className="ProgressBarContainer">
-          <div className="progress-bar">
-            <div className="progress-fill" />
-          </div>
-
-
-          <div className="progress-bar">
-            {currentStep === 2 && (
-              <div className="progress-fill" />
-            )}
-
-          </div>
-
+        <div className="progress-bar">
+          <div 
+            className="progress-fill"
+            style={{ width: `${porcentaje}%` }}
+          />
         </div>
-        <span className="step-text">{`Paso ${currentStep} de ${totalPasos}`}</span>
+        <span className="step-text">{`Paso ${pasoActual} de ${totalPasos}`}</span>
       </div>
-    </>
+    </div>
   );
 };
 
