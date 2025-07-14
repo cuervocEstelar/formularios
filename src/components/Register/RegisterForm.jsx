@@ -49,9 +49,9 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="register-container">
-      <StepIndicador currentStep={currentStep}/>
-      <h2 className="register-title">Regístrate</h2>
+    <div id='registerForm' className="register-container">
+      <StepIndicador currentStep={currentStep} totalSteps={totalSteps} />
+
 
       <form onSubmit={handleSubmit} className="register-form">
         {/* Renderiza el paso 1 si currentStep es 1 */}
@@ -86,6 +86,14 @@ const RegisterForm = () => {
           )}
         </div>
       </form>
+
+{currentStep === 1   && (
+  <div className='loginTextContainer'> 
+    <p className="login-text">
+      ¿Ya tienes una cuenta? <a href="https://www.estelarbet.vip/?accounts=%2A&register=%2A">Inicia sesión</a>
+    </p>
+  </div>
+)}
     </div>
   );
 };

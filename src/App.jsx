@@ -1,15 +1,19 @@
 import ImageContent from "./components/Content/ImageContent"
-import TextContent from "./components/Content/TextContent"
-import RegisterForm from "./components/Register/RegisterForm"
+import DesktopView from "./DesktopView";
+import MobileView from "./MobileView";
+
+const isMobile = () => window.innerWidth <= 768;
+
 
 const App = () => {
   return (
+
     <div className=" container ">
+{/* <ImageContent /> */}
+
+{isMobile() ? ( <MobileView/> ) : (<DesktopView/>)}
 
 
-<ImageContent />
-<TextContent />
-<RegisterForm />
 
     </div>
   )

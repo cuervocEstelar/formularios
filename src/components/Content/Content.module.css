@@ -54,6 +54,12 @@ width: 100%;
 
 @media screen and (max-width: 768px) {
 
+
+.text_section{
+  gap: 0;
+}
+
+
   .text_section span{
 align-self: stretch;
 color: #FFF;

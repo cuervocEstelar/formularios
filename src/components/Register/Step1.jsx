@@ -11,7 +11,6 @@ const Step1 = ({ formData, onChange }) => {
           onChange={onChange}
         />
       </div>
-
       <div className="names-inputs">
         <div className="inputs-box">
           <label className="form-label">Nombre</label>

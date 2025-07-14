@@ -1,6 +1,4 @@
 /* formulario */
-
-
 .register-container {
     background-color: #19203B;
     display: flex;
@@ -13,8 +11,6 @@
     border-radius: var(--Space-radius-xl, 12px);
     padding: 24px;
 }
-
-
 .register-title {
     color: #FFF;
 
@@ -26,21 +22,18 @@
     line-height: var(--Line-height-text-lg, 28px);
     /* 155.556% */
 }
-
-
 /* indicador de progreso  */
 .ProgressBarContainer {
     display: flex;
     gap: 4px;
+    width: 100%;
 }
-
 .step-container {
     background: #19203b;
     border-radius: 12px;
-    width: 320px;
+    width: 100%;
     box-sizing: border-box;
 }
-
 .progress-bar {
     height: 6px;
     background: #2d3b67;
@@ -48,27 +41,18 @@
     width: 100%;
     margin-bottom: 8px;
 }
-
 .progress-fill {
     height: 100%;
     background: #8B5CF6;
     border-radius: 6px;
     transition: width 0.3s;
 }
-
 .step-text {
     color: #F7F8F8;
     font-size: 14px;
     font-family: Inter, sans-serif;
 }
-
-
-
-
-
-
 /* formulario styles */
-
 .register-form {
     width: 100%;
     display: flex;
@@ -164,4 +148,133 @@
     background: var(--Components-colors-inputs-input-bg, #232D4D);
     /* Shadows/shadow-xs */
     box-shadow: 0px 1px 2px 0px var(--Colors-Effects-Shadows-shadow-xs, rgba(10, 13, 18, 0.05));
+}
+
+
+
+
+/* login-text styles */
+
+.loginTextContainer{
+    width: 100%;
+}
+.login-text {
+color: var(--Color-text-text-secondary, #C4C7CC);
+
+/* Text sm/Medium */
+font-family: var(--Typeface-font-paragraph, Inter);
+font-size: var(--Font-size-text-sm, 0.875rem);
+font-style: normal;
+font-weight: 500;
+line-height: var(--Line-height-text-sm, 1.25rem); /* 142.857% */
+text-align: center;
+}
+.login-text a {
+
+color: var(--Color-text-text-brand-secondary, #9273EA);
+
+/* Text sm/Semibold */
+font-family: var(--Font-family-font-family-body, Inter);
+font-size: var(--Font-size-text-sm, 0.875rem);
+font-style: normal;
+font-weight: 600;
+line-height: var(--Line-height-text-sm, 1.25rem); /* 142.857% */
+text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+/* TyC */
+
+.terms-container{
+    display: flex;
+    justify-content: start;
+    gap: 1rem;
+}
+
+.form-label-terms{
+color: var(--Color-text-text-tertiary, #898F99);
+/* Text sm/Regular */
+font-family: var(--Font-family-font-family-body, Inter);
+font-size: var(--Font-size-text-sm, 0.875rem);
+font-style: normal;
+font-weight: 400;
+line-height: var(--Line-height-text-sm, 1.25rem); /* 142.857% */
+}
+
+.form-label-terms b{
+color: var(--Color-text-text-primary, #F7F8F8);
+/* Text sm/Regular */
+font-family: var(--Font-family-font-family-body, Inter);
+font-size: var(--Font-size-text-sm, 0.875rem);
+font-style: normal;
+font-weight: 400;
+line-height: var(--Line-height-text-sm, 1.25rem);
+}
+
+.checkbox-terms{
+width: 1rem;
+height: 1rem;
+border-radius: var(--spacing-xs, 0.25rem);
+border: 1px solid var(--Components-colors-checkbox-checkbox-border, #898F99);
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+ .register-container{
+display: none;
+height: 100vh;
+padding:  0 ;
+width: 100%;
+flex-direction: column;
+justify-content: center;
+align-items: start;
+box-sizing: content-box;
+ }
+
+.register-form {
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: start;
+gap: 2rem;
+padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.form-navigation{
+    margin-top: 3rem;
+}
+.inputs-box {
+    width: 100%;
+    box-sizing: border-box;
+      /* width: auto; */
+}
+.date-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h2{
+padding: 0 1rem;
+}
+.step-text{
+    padding: 0 1rem;
+}
+.ProgressBarContainer{
+    box-sizing: border-box;
+    padding: 0 1rem;
+}
 }
