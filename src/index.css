@@ -19,8 +19,10 @@ body {
   display: flex;
   justify-content: end;
   align-items: center;
-  margin: 10rem 0;
+  /* margin: 10rem 0; */
   gap: 2rem;
+  height: 100vh;
+  padding: 0 2rem 0 0;
 }
 
 /* buttons  */

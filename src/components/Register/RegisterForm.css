@@ -251,9 +251,7 @@ padding: 0 1rem;
     box-sizing: border-box;
 }
 
-.form-navigation{
-    margin-top: 3rem;
-}
+
 .inputs-box {
     width: 100%;
     box-sizing: border-box;
@@ -273,8 +271,24 @@ padding: 0 1rem;
 .step-text{
     padding: 0 1rem;
 }
+
+.nav-button-next{
+margin-top: 1rem;
+}
 .ProgressBarContainer{
     box-sizing: border-box;
     padding: 0 1rem;
 }
+}
+
+
+
+
+@media screen and (max-width: 340px) {
+
+    .register-container {
+        padding: 0 1rem;
+        height: auto;
+    }
+
 }
