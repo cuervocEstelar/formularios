@@ -49,30 +49,57 @@ const Step1 = ({ formData, onChange }) => {
       <div className="inputs-box">
         <label className="form-label">Fecha de nacimiento</label>
         <div className="date-inputs">
-          <input
-            className="form-input date-input"
-            type="text"
-            name="dia"
-            value={formData.dia}
-            onChange={onChange}
-          />
+  {/* Día */}
+  <select
+    className="form-select date-input"
+    name="dia"
+    value={formData.dia}
+    onChange={onChange}
+  >
+    <option value="">Día</option>
+    {Array.from({ length: 31 }, (_, i) => (
+      <option key={i + 1} value={i + 1}>
+        {i + 1}
+      </option>
+    ))}
+  </select>
 
-          <input
-            className="form-input date-input"
-            type="text"
-            name="mes"
-            value={formData.mes}
-            onChange={onChange}
-          />
+  {/* Mes */}
+  <select
+    className="form-select date-input"
+    name="mes"
+    value={formData.mes}
+    onChange={onChange}
+  >
+    <option value="">Mes</option>
+    {[
+      'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ].map((mes, i) => (
+      <option key={i + 1} value={i + 1}>
+        {mes}
+      </option>
+    ))}
+  </select>
 
-          <input
-            className="form-input date-input"
-            type="text"
-            name="ano"
-            value={formData.ano}
-            onChange={onChange}
-          />
-        </div>
+  {/* Año */}
+  <select
+    className="form-select date-input"
+    name="ano"
+    value={formData.ano}
+    onChange={onChange}
+  >
+    <option value="">Año</option>
+    {Array.from({ length: 100 }, (_, i) => {
+      const year = new Date().getFullYear() - i;
+      return (
+        <option key={year} value={year}>
+          {year}
+        </option>
+      );
+    })}
+  </select>
+</div>
       </div>
 
       <div className="inputs-box">

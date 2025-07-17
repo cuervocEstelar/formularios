@@ -118,7 +118,20 @@
     flex: 1;
 }
 
+/*  input select */
+select option {
+  background-color: #232d4d;
+  color: #C4C7CC;
+}
 
+select option:hover  {
+  background-color: #232d4d;
+  color: #C4C7CC;
+}
+select option:checked {
+  background-color: #121626;
+  color: #C4C7CC;
+}
 
 
 
@@ -144,11 +157,40 @@
     width: 100%;
     box-sizing: border-box;
     border-radius: var(--Space-radius-sm, 6px);
-    border: var(--Space-stroke-input, 1.5px) solid var(--Components-colors-inputs-input-border, #2D3961);
+    /* border: var(--Space-stroke-input, 1.5px) solid var(--Components-colors-inputs-input-border, #2D3961); */
     background: var(--Components-colors-inputs-input-bg, #232D4D);
     /* Shadows/shadow-xs */
     box-shadow: 0px 1px 2px 0px var(--Colors-Effects-Shadows-shadow-xs, rgba(10, 13, 18, 0.05));
 }
+
+input.form-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #232D4D inset !important; /* color de fondo */
+  -webkit-text-fill-color: white !important; /* color del texto */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+.form-input {
+  caret-color: #fff; /* o blanco, o el color de tu marca */
+}
+
+input.form-input {
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input.form-input:hover {
+  border-color: #242e51;
+}
+
+input.form-input:focus {
+  border-color: #9273ea;
+  box-shadow: 0 0 0 2px rgba(146, 115, 234, 0.3);
+  outline: none;
+}
+
+
+
 
 
 
