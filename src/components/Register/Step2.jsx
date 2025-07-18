@@ -8,7 +8,7 @@ const Step2 = ({ formData, onChange }) => {
           className="form-input"
           type="password"
           name="password"
-          value={formData.password}
+          value={formData.password || ''}
           onChange={onChange}
         />
       </div>
@@ -20,7 +20,7 @@ const Step2 = ({ formData, onChange }) => {
           className="form-input"
           type="password"
           name="passwordVerification"
-          value={formData.passwordVerification}
+          value={formData.passwordVerification || ''}
           onChange={onChange}
         />
       </div>
@@ -32,7 +32,7 @@ const Step2 = ({ formData, onChange }) => {
           className="form-input"
           type="text"
           name="city"
-          value={formData.city}
+          value={formData.city || ''}
           onChange={onChange}
         />
       </div>
@@ -40,13 +40,16 @@ const Step2 = ({ formData, onChange }) => {
       {/* Grupo: Moneda */}
       <div className="inputs-box">
         <label className="form-label">Moneda</label>
-        <input
+        <select
           className="form-input"
-          type="text"
           name="currency"
-          value={formData.currency}
+          value={formData.currency || ''}
           onChange={onChange}
-        />
+        >
+          <option value="CLP">CLP</option>
+          <option value="USD">USD</option>
+      
+        </select>
       </div>
 
       {/* Grupo: Código promocional */}
@@ -56,7 +59,7 @@ const Step2 = ({ formData, onChange }) => {
           className="form-input"
           type="text"
           name="promoCode"
-          value={formData.promoCode}
+          value={formData.promoCode || ''}
           onChange={onChange}
         />
       </div>
@@ -67,7 +70,7 @@ const Step2 = ({ formData, onChange }) => {
           className="checkbox-terms"
           type="checkbox"
           name="termsAccepted"
-          checked={formData.termsAccepted}
+          checked={formData.termsAccepted || false}
           onChange={onChange}
         />
         <label className="form-label-terms">

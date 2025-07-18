@@ -9,16 +9,23 @@ import StepIndicador from './StepIndicator';
 const RegisterForm = () => {
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
+    //step 1 
+    Nombre: '',
+    Apellido: '',
     email: '',
-    telefono: '',
+    Telefono: '',
     codeArea: '56',
-    rut: '',
+    Rut: '',
     dia: '',
     mes: '',
     ano: '',
-    
+    //step 2 
+    password: '',
+    passwordVerification: '',
+    city: '',
+    currency: 'CLP', // valor inicial por defecto
+    promoCode: '',
+    termsAccepted: false,
   });
 
   // Estado para controlar el paso actual del wizard
@@ -26,10 +33,14 @@ const RegisterForm = () => {
   const totalSteps = 2; // Número total de pasos
 
   // Función para manejar cambios en los campos del formulario
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name.toLowerCase()]: value }));
-  };
+const handleChange = (e) => {
+  const { name, value, type, checked } = e.target;
+  setFormData((prev) => ({
+    ...prev,
+    [name]: type === 'checkbox' ? checked : value
+  }));
+};
+
 
   // Ir al siguiente paso
   const nextStep = () => {

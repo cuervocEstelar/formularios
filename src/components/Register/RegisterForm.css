@@ -81,6 +81,21 @@
     width: 100%;
     box-sizing: border-box;
 }
+.date-inputs select {
+border-radius: var(--Space-radius-sm, 6px);
+border: var(--Space-stroke-input, 1.5px) solid var(--Components-colors-inputs-input-border, #2D3961);
+background: var(--Components-colors-inputs-input-bg, #232D4D);
+
+/* Shadows/shadow-xs */
+box-shadow: 0px 1px 2px 0px var(--Colors-Effects-Shadows-shadow-xs, rgba(10, 13, 18, 0.05));
+display: flex;
+padding: 10px 14px;
+align-items: center;
+gap: var(--spacing-md, 8px);
+align-self: stretch;
+color: #C4C7CC;
+width: 100%;
+}
 
 
 .phone-input-container {
@@ -161,6 +176,7 @@ select option:checked {
     background: var(--Components-colors-inputs-input-bg, #232D4D);
     /* Shadows/shadow-xs */
     box-shadow: 0px 1px 2px 0px var(--Colors-Effects-Shadows-shadow-xs, rgba(10, 13, 18, 0.05));
+    color: #C4C7CC;
 }
 
 input.form-input:-webkit-autofill {
