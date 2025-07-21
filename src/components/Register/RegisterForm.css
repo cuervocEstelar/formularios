@@ -1,3 +1,13 @@
+
+.check1 {
+  color: var(--Color-text-text-success, #69E9B9);
+font-family: "Font Awesome 6 Free";
+font-size: 16px;
+font-style: normal;
+font-weight: 900;
+line-height: normal;
+}
+
 /* formulario */
 .register-container {
     background-color: #19203B;
@@ -22,6 +32,35 @@
     line-height: var(--Line-height-text-lg, 28px);
     /* 155.556% */
 }
+
+
+/* password steps */
+
+.password-requirements{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 8px;
+}
+
+.requirement-item{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.requirement-text{
+color: #B5C0DB;
+margin: 0;
+/* Text sm/Regular */
+font-family: var(--Typeface-font-paragraph, Inter);
+font-size: var(--Font-size-text-sm, 14px);
+font-style: normal;
+font-weight: 400;
+line-height: var(--Line-height-text-sm, 20px); /* 142.857% */
+}
+
+
 /* indicador de progreso  */
 .ProgressBarContainer {
     display: flex;
@@ -172,7 +211,7 @@ select option:checked {
     width: 100%;
     box-sizing: border-box;
     border-radius: var(--Space-radius-sm, 6px);
-    /* border: var(--Space-stroke-input, 1.5px) solid var(--Components-colors-inputs-input-border, #2D3961); */
+    border: var(--Space-stroke-input, 1.5px) solid var(--Components-colors-inputs-input-border, #2D3961); 
     background: var(--Components-colors-inputs-input-bg, #232D4D);
     /* Shadows/shadow-xs */
     box-shadow: 0px 1px 2px 0px var(--Colors-Effects-Shadows-shadow-xs, rgba(10, 13, 18, 0.05));

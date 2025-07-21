@@ -43,10 +43,71 @@ const handleChange = (e) => {
 
 
   // Ir al siguiente paso
-  const nextStep = () => {
-    if (currentStep < totalSteps) setCurrentStep(currentStep + 1);
+  const isStep1Valid = () => {
+    return (
+      formData.email &&
+      formData.Nombre &&
+      formData.Apellido &&
+      formData.Rut &&
+      formData.dia &&
+      formData.mes &&
+      formData.ano &&
+      formData.Telefono
+    );
   };
 
+  const isStep2Valid = () => {
+    return (
+      formData.password &&
+      /[a-z]/.test(formData.password) &&
+      /[A-Z]/.test(formData.password) &&
+      /\d/.test(formData.password) &&
+      formData.password.length >= 8 &&
+      formData.passwordVerification &&
+      formData.password === formData.passwordVerification &&
+      formData.city &&
+      formData.currency &&
+      formData.termsAccepted
+    );
+  };
+
+  const nextStep = () => {
+    if (currentStep === 1 && !isStep1Valid()) {
+      // Check which fields are missing in step 1
+      const missingFields = [];
+      if (!formData.email) missingFields.push('Email');
+      if (!formData.Nombre) missingFields.push('Nombre');
+      if (!formData.Apellido) missingFields.push('Apellido');
+      if (!formData.Rut) missingFields.push('Rut');
+      if (!formData.dia) missingFields.push('Día');
+      if (!formData.mes) missingFields.push('Mes');
+      if (!formData.ano) missingFields.push('Año');
+      if (!formData.Telefono) missingFields.push('Teléfono');
+      
+      console.log("Campos faltantes en Step 1:", missingFields.join(', '));
+      return;
+    }
+
+    if (currentStep === 2 && !isStep2Valid()) {
+      // Check which fields are missing or invalid in step 2
+      const errors = [];
+      if (!formData.password) errors.push('Contraseña requerida');
+      else {
+        if (!/[a-z]/.test(formData.password)) errors.push('Falta letra minúscula en contraseña');
+        if (!/[A-Z]/.test(formData.password)) errors.push('Falta letra mayúscula en contraseña');
+        if (!/\d/.test(formData.password)) errors.push('Falta número en contraseña');
+        if (formData.password.length < 8) errors.push('Contraseña debe tener al menos 8 caracteres');
+      }
+      if (!formData.passwordVerification) errors.push('Confirmación de contraseña requerida');
+      if (formData.password !== formData.passwordVerification) errors.push('Las contraseñas no coinciden');
+      if (!formData.city) errors.push('Ciudad requerida');
+      if (!formData.termsAccepted) errors.push('Debe aceptar los términos y condiciones');
+      console.log("Errores en Step 2:", errors.join(', '));
+      return;
+    }
+
+    if (currentStep < totalSteps) setCurrentStep(currentStep + 1);
+  };
   // Volver al paso anterior
   const prevStep = () => {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
@@ -87,11 +148,11 @@ const handleChange = (e) => {
             </button>
           )}
           {currentStep < totalSteps ? (
-            <button className="nav-button nav-button-next" type="button" onClick={nextStep}>
+            <button className="nav-button nav-button-next" type="button" onClick={nextStep} >
               Continuar
             </button>
           ) : (
-            <button className="nav-button nav-button-submit" type="submit">
+            <button className="nav-button nav-button-submit"  onClick={nextStep} type="submit">
               Crear cuenta
             </button>
           )}

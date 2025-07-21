@@ -1,3 +1,5 @@
+import { FaCircleCheck } from "react-icons/fa6";
+
 const Step2 = ({ formData, onChange }) => {
   return (
     <>
@@ -8,9 +10,33 @@ const Step2 = ({ formData, onChange }) => {
           className="form-input"
           type="password"
           name="password"
-          value={formData.password || ''}
+          value={formData.password}
           onChange={onChange}
         />
+      </div>
+
+      <div className="password-requirements">
+        <div className="requirement-item">
+          <FaCircleCheck 
+            size={20} 
+            color={/[a-z]/.test(formData.password) && /[A-Z]/.test(formData.password) ? "#69E9B9" : "#565C66"} 
+          />  
+          <p className="requirement-text">Incluye letras mayúsculas y minúsculas</p>
+        </div>
+        <div className="requirement-item">
+          <FaCircleCheck 
+            size={20} 
+            color={/\d/.test(formData.password) ? "#69E9B9" : "#565C66"} 
+          />  
+          <p className="requirement-text">Al menos 1 número</p>
+        </div>
+        <div className="requirement-item">
+          <FaCircleCheck 
+            size={20} 
+            color={formData.password.length >= 8 ? "#69E9B9" : "#565C66"} 
+          />  
+          <p className="requirement-text">Al menos 8 caracteres</p>
+        </div>
       </div>
 
       {/* Grupo: Verificación de contraseña */}
@@ -20,7 +46,7 @@ const Step2 = ({ formData, onChange }) => {
           className="form-input"
           type="password"
           name="passwordVerification"
-          value={formData.passwordVerification || ''}
+          value={formData.passwordVerification}
           onChange={onChange}
         />
       </div>
@@ -32,7 +58,7 @@ const Step2 = ({ formData, onChange }) => {
           className="form-input"
           type="text"
           name="city"
-          value={formData.city || ''}
+          value={formData.city }
           onChange={onChange}
         />
       </div>
@@ -43,7 +69,7 @@ const Step2 = ({ formData, onChange }) => {
         <select
           className="form-input"
           name="currency"
-          value={formData.currency || ''}
+          value={formData.currency }
           onChange={onChange}
         >
           <option value="CLP">CLP</option>
@@ -59,7 +85,7 @@ const Step2 = ({ formData, onChange }) => {
           className="form-input"
           type="text"
           name="promoCode"
-          value={formData.promoCode || ''}
+          value={formData.promoCode }
           onChange={onChange}
         />
       </div>
@@ -77,6 +103,7 @@ const Step2 = ({ formData, onChange }) => {
           Estoy de acuerdo con todos los <b>Términos y condiciones y la Política de privacidad</b> y soy mayor de 18 años.
         </label>
       </div>
+ 
     </>
   );
 };

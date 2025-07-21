@@ -18,7 +18,7 @@ const Step1 = ({ formData, onChange }) => {
             className="form-input"
             type="text"
             name="Nombre"
-            value={formData.nombre || ''}
+            value={formData.nombre}
             onChange={onChange}
           />
         </div>
@@ -29,7 +29,7 @@ const Step1 = ({ formData, onChange }) => {
             className="form-input"
             type="text"
             name="Apellido"
-            value={formData.apellido || ''}
+            value={formData.apellido }
             onChange={onChange}
           />
         </div>
@@ -41,7 +41,7 @@ const Step1 = ({ formData, onChange }) => {
           className="form-input"
           type="text"
           name="Rut"
-          value={formData.rut || ''}
+          value={formData.rut }
           onChange={onChange}
         />
       </div>
@@ -51,10 +51,10 @@ const Step1 = ({ formData, onChange }) => {
         <div className="date-inputs">
           <input
             className="form-input date-input"
-            type="text"
+            type="number"
             name="dia"
             placeholder="DD"
-            value={formData.dia || ''}
+            value={formData.dia }
             onChange={onChange}
           />
 
@@ -78,7 +78,7 @@ const Step1 = ({ formData, onChange }) => {
 
           <input
             className="form-input date-input"
-            type="text"
+            type="number"
             name="ano"
             placeholder="AAAA"
             value={formData.ano || ''}
@@ -105,7 +105,7 @@ const Step1 = ({ formData, onChange }) => {
             className="form-input phone-input"
             type="tel" 
             name="Telefono"
-            value={formData.telefono || ''}
+            value={formData.telefono }
             onChange={onChange}
             pattern="[0-9]*"
             inputMode="numeric"
