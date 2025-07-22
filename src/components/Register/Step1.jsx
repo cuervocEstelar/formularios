@@ -1,4 +1,60 @@
 const Step1 = ({ formData, onChange }) => {
+  // Función para validar RUT chileno (formato básico)
+  const validarRut = (rut) => {
+    // Eliminar puntos y guiones, permitir números y K
+    const rutLimpio = rut.replace(/[^0-9kK]/g, '');
+    
+    // Si el RUT está vacío o es muy corto, no es válido
+    if (rutLimpio.length < 2) return false;
+    
+    // Separar cuerpo y dígito verificador
+    const cuerpo = rutLimpio.slice(0, -1);
+    const dv = rutLimpio.slice(-1).toUpperCase();
+    
+    // Verificar que el cuerpo contenga solo números
+    if (!/^[0-9]+$/.test(cuerpo)) return false;
+    
+    // Verificar que el dígito verificador sea válido (0-9 o K)
+    if (!/^[0-9K]$/.test(dv)) return false;
+    
+    // Verificar longitud mínima del cuerpo (al menos 7 dígitos)
+    if (cuerpo.length < 7) return false;
+    
+    return true;
+  };
+  
+  // Función para formatear RUT (agregar guion)
+  const formatearRut = (rut) => {
+    // Eliminar puntos y guiones, permitir números y K
+    let rutLimpio = rut.replace(/[^0-9kK]/g, '');
+    
+    // Si el RUT está vacío, retornar vacío
+    if (rutLimpio.length === 0) return '';
+    
+    // Separar cuerpo y dígito verificador
+    const dv = rutLimpio.slice(-1).toUpperCase();
+    const cuerpo = rutLimpio.slice(0, -1);
+    
+    // Retornar RUT formateado
+    return `${cuerpo}-${dv}`;
+  };
+  
+  // Manejador personalizado para el campo RUT
+  const handleRutChange = (e) => {
+    const { value } = e.target;
+    const rutFormateado = formatearRut(value);
+    
+    // Crear un evento sintético para mantener la consistencia con onChange
+    const syntheticEvent = {
+      target: {
+        name: 'Rut',
+        value: rutFormateado,
+        type: 'text'
+      }
+    };
+    
+    onChange(syntheticEvent);
+  };
   return (
     <>
       <div className="inputs-box">
@@ -41,9 +97,15 @@ const Step1 = ({ formData, onChange }) => {
           className="form-input"
           type="text"
           name="Rut"
-          value={formData.rut }
-          onChange={onChange}
+          value={formData.Rut || ''}
+          onChange={handleRutChange}
+          placeholder="12345678-9"
         />
+        {formData.Rut && formData.Rut.includes('-') && !validarRut(formData.Rut) && (
+          <div style={{ color: 'red', fontSize: '12px', marginTop: '4px' }}>
+            RUT inválido. Verifique el número ingresado.
+          </div>
+        )}
       </div>
 
       <div className="inputs-box">

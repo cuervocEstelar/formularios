@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Step1 from './Step1';
 import Step2 from './Step2';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './RegisterForm.css';
 import StepIndicador from './StepIndicator';
@@ -42,6 +44,43 @@ const handleChange = (e) => {
 };
 
 
+  // Función para validar RUT chileno
+  const validarRut = (rut) => {
+    // Si no hay RUT, no es válido
+    if (!rut) return false;
+    
+    // Eliminar puntos y guiones
+    const rutLimpio = rut.replace(/[^0-9kK]/g, '');
+    
+    // Si el RUT está vacío o es muy corto, no es válido
+    if (rutLimpio.length < 2) return false;
+    
+    // Separar cuerpo y dígito verificador
+    const cuerpo = rutLimpio.slice(0, -1);
+    const dv = rutLimpio.slice(-1).toUpperCase();
+    
+    // Calcular dígito verificador
+    let suma = 0;
+    let multiplicador = 2;
+    
+    // Recorrer el cuerpo de derecha a izquierda
+    for (let i = cuerpo.length - 1; i >= 0; i--) {
+      suma += parseInt(cuerpo[i]) * multiplicador;
+      multiplicador = multiplicador === 7 ? 2 : multiplicador + 1;
+    }
+    
+    // Calcular dígito verificador esperado
+    const dvEsperado = 11 - (suma % 11);
+    let dvCalculado;
+    
+    if (dvEsperado === 11) dvCalculado = '0';
+    else if (dvEsperado === 10) dvCalculado = 'K';
+    else dvCalculado = dvEsperado.toString();
+    
+    // Comparar dígito verificador calculado con el proporcionado
+    return dvCalculado === dv;
+  };
+
   // Ir al siguiente paso
   const isStep1Valid = () => {
     return (
@@ -79,12 +118,30 @@ const handleChange = (e) => {
       if (!formData.Nombre) missingFields.push('Nombre');
       if (!formData.Apellido) missingFields.push('Apellido');
       if (!formData.Rut) missingFields.push('Rut');
+      else if (!validarRut(formData.Rut)) missingFields.push('RUT inválido');
       if (!formData.dia) missingFields.push('Día');
       if (!formData.mes) missingFields.push('Mes');
       if (!formData.ano) missingFields.push('Año');
       if (!formData.Telefono) missingFields.push('Teléfono');
       
       console.log("Campos faltantes en Step 1:", missingFields.join(', '));
+      toast.error(`Campos faltantes o inválidos: ${missingFields.join(', ')}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        icon: "🚫", // You can customize the icon here - use emoji or custom component
+        style: {
+          background: "#19203B", // toast background
+          color: "#FFFFFF",      // text color
+          
+          borderRadius: "8px",
+          fontFamily: "Inter",
+        },
+        progressClassName: "toast-progress-bar", // Using a custom class for progress bar styling
+      });
       return;
     }
 
@@ -103,6 +160,14 @@ const handleChange = (e) => {
       if (!formData.city) errors.push('Ciudad requerida');
       if (!formData.termsAccepted) errors.push('Debe aceptar los términos y condiciones');
       console.log("Errores en Step 2:", errors.join(', '));
+      toast.error(`Errores: ${errors.join(', ')}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
       return;
     }
 
@@ -122,6 +187,7 @@ const handleChange = (e) => {
 
   return (
     <div id='registerForm' className="register-container">
+      <ToastContainer />
       <StepIndicador currentStep={currentStep} totalSteps={totalSteps} />
 
 
