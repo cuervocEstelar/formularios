@@ -4,11 +4,15 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import './RegisterForm.css';
 import StepIndicador from './StepIndicator';
+import axios from "axios";
 
 const RegisterForm = () => {
+
+
+
+
   // Estado para almacenar los datos del formulario
   const [formData, setFormData] = useState({
     //step 1 
@@ -179,17 +183,43 @@ const handleChange = (e) => {
   };
 
   // Enviar el formulario
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Datos enviados:', formData);
-    // Aquí podrías hacer un fetch/axios a tu backend
-  };
+ 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await axios.post("http://localhost/FormularioLandingBackend/index.php", formData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.data.success) {
+      console.log("Registro exitoso");
+      // mostrar feedback positivo o redireccionar
+    } else {
+      console.error("Error del servidor:", response.data.message);
+    }
+  } catch (error) {
+    console.error("Error al enviar datos:", error);
+  }
+};
 
   return (
     <div id='registerForm' className="register-container">
-      <ToastContainer />
       <StepIndicador currentStep={currentStep} totalSteps={totalSteps} />
-
+      <ToastContainer 
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
 
       <form onSubmit={handleSubmit} className="register-form">
         {/* Renderiza el paso 1 si currentStep es 1 */}

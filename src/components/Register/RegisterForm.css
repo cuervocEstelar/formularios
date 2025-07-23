@@ -114,6 +114,11 @@ line-height: var(--Line-height-text-sm, 20px); /* 142.857% */
 .inputs-box {
     width: 100%;
 }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 
 .date-inputs {
@@ -384,6 +389,41 @@ margin-top: 1rem;
 
 
 
+
+/* Password input container styles */
+.password-input-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-container .form-input {
+    padding-right: 40px;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #898F99;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+    color: #C4C7CC;
+}
+
+.password-toggle-btn:focus {
+    outline: none;
+    color: #9273EA;
+}
 
 @media screen and (max-width: 340px) {
 

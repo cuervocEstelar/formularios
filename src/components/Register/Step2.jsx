@@ -1,18 +1,30 @@
-import { FaCircleCheck } from "react-icons/fa6";
+import { FaCircleCheck, FaEye, FaEyeSlash } from "react-icons/fa6";
+import { useState } from "react";
 
 const Step2 = ({ formData, onChange }) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordVerification, setShowPasswordVerification] = useState(false);
   return (
     <>
       {/* Grupo: Contraseña */}
       <div className="inputs-box">
         <label className="form-label">Contraseña</label>
-        <input
-          className="form-input"
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={onChange}
-        />
+        <div className="password-input-container">
+          <input
+            className="form-input"
+            type={showPassword ? "text" : "password"}
+            name="password"
+            value={formData.password}
+            onChange={onChange}
+          />
+          <button
+            type="button"
+            className="password-toggle-btn"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
+          </button>
+        </div>
       </div>
 
       <div className="password-requirements">
@@ -42,13 +54,22 @@ const Step2 = ({ formData, onChange }) => {
       {/* Grupo: Verificación de contraseña */}
       <div className="inputs-box">
         <label className="form-label">Verificación de contraseña</label>
-        <input
-          className="form-input"
-          type="password"
-          name="passwordVerification"
-          value={formData.passwordVerification}
-          onChange={onChange}
-        />
+        <div className="password-input-container">
+          <input
+            className="form-input"
+            type={showPasswordVerification ? "text" : "password"}
+            name="passwordVerification"
+            value={formData.passwordVerification}
+            onChange={onChange}
+          />
+          <button
+            type="button"
+            className="password-toggle-btn"
+            onClick={() => setShowPasswordVerification(!showPasswordVerification)}
+          >
+            {showPasswordVerification ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
+          </button>
+        </div>
       </div>
 
       {/* Grupo: Ciudad */}
@@ -109,3 +130,50 @@ const Step2 = ({ formData, onChange }) => {
 };
 
 export default Step2;
+
+
+// Apellido
+// : 
+// "salas"
+// Nombre
+// : 
+// "DAVID"
+// Rut
+// : 
+// "18882749-7"
+// Telefono
+// : 
+// "9238918312"
+// ano
+// : 
+// "1994"
+// city
+// : 
+// "santiago"
+// codeArea
+// : 
+// "56"
+// currency
+// : 
+// "CLP"
+// dia
+// : 
+// "11"
+// email
+// : 
+// "davidsalas409@gmail.com"
+// mes
+// : 
+// "10"
+// password
+// : 
+// "Estelarbet2025"
+// passwordVerification
+// : 
+// "Estelarbet2025"
+// promoCode
+// : 
+// "Estelarbet2025"
+// termsAccepted
+// : 
+// true
